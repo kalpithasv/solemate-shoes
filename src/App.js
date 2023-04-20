@@ -7,12 +7,9 @@ import { Routes, Route } from 'react-router-dom';
 
 const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="shop/*" element={<Shop />} />
-      <Route path="auth" element={<Auth />} />
-      <Route path="cart" element={<Cart />} />
-    </Routes>
+    <div>
+      <h1 className="uppercase">Welcome To Solemate Shoes</h1>
+    </div>
   );
 };
 
