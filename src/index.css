@@ -1,11 +1,22 @@
-*,
-*::before,
-*::after {
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: sans-serif;
 }
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .desktop-main-menu {
+    @apply relative;
+  }
+  .desktop-main-menu::after {
+    @apply content-[''] absolute bottom-0 left-0 w-full h-[2px] bg-[#221fb3] transform scale-x-0 transition-all duration-500 ease-out;
+  }
+  .desktop-main-menu:hover::after {
+    @apply transform scale-x-[100%] transition;
+  }
+}
