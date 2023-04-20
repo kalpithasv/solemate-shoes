@@ -1,6 +1,5 @@
 import React from 'react';
 import NikeImg from '../assets/nikeimg.png';
-import uparrow from '../assets/uparrow.svg';
 
 const Header = () => {
   return (
