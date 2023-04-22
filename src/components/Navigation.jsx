@@ -33,7 +33,7 @@ const Navigation = () => {
   useEffect(() => {
     getUser();
     console.log('useEffect');
-  }, []);
+  });
 
   const categories = [
     { name: 'Mens', href: '/shop/mens' },
