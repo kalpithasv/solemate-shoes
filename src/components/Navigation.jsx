@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { BsBag, BsHeart, BsXLg, BsList } from 'react-icons/bs';
+import { BsBag, BsXLg, BsList } from 'react-icons/bs';
 import '../index.css';
 import { useDispatch } from 'react-redux';
 import { authActions } from '../store/auth-slice';

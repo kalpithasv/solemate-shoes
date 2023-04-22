@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import AuthImg from '../assets/authimg.png';
 import { useNavigate } from 'react-router-dom';
 import GoogleLogo from '../assets/google-icon.svg';
-import { doc, setDoc, getDoc } from 'firebase/firestore';
+import { doc, setDoc } from 'firebase/firestore';
 import { db } from '../utils/firebase';
 import {
   getAuth,
