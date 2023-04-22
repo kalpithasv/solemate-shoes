@@ -4,7 +4,7 @@ import NikeImg from '../assets/nikeimg.png';
 const Header = () => {
   return (
     <div>
-      <div className="bg-[#eee] w-full overflow-hidden min-h-[90vh] relative flex">
+      <div className="bg-[#eee] w-full overflow-hidden h-[calc(100vh-4rem)] relative flex">
         <div className="absolute flex-shrink-1 top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] scale-[36%] xs:scale-[47%] sm:scale-[55%] md:scale-75 2xl:scale-100 flex">
           <img
             src={NikeImg}
