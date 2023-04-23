@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { BsBag, BsXLg, BsList } from 'react-icons/bs';
+import { BsBag, BsXLg, BsList, BsBoxArrowInLeft, BsBox } from 'react-icons/bs';
 import '../index.css';
 import { useDispatch } from 'react-redux';
 import { authActions } from '../store/auth-slice';
@@ -19,7 +19,10 @@ const Navigation = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const { user } = useSelector((state) => state.auth);
+
   const [showCart, setShowCart] = useState(false);
+  const [showUser, setShowUser] = useState(false);
 
   const getUser = () => {
     let user = localStorage.getItem('user');
@@ -27,13 +30,22 @@ const Navigation = () => {
     if (!user) return;
     dispatch(authActions.setUser(user));
     dispatch(authActions.setIsAuthenticated(true));
-    navigate('/mens');
+    navigate('/');
   };
+
+  const logout = (e) => {
+    console.log('logout');
+    // e.preventDefault();
+    // localStorage.removeItem('user');
+    // dispatch(authActions.setUser(null));
+    // navigate('/auth');
+  };
+
+  useEffect(() => {}, [user]);
 
   useEffect(() => {
     getUser();
-    console.log('useEffect');
-  });
+  }, []);
 
   const categories = [
     { name: 'Mens', href: '/shop/mens' },
@@ -74,7 +86,7 @@ const Navigation = () => {
             </div>
 
             {isLogged ? (
-              <div>
+              <div className="relative" onClick={(e) => setShowUser(!showUser)}>
                 <img
                   src={
                     avatarUrl ||
@@ -83,6 +95,22 @@ const Navigation = () => {
                   alt="avatar"
                   className="h-7 w-7  shadow-lg cursor-pointer rounded-full"
                 />
+                {showUser && (
+                  <div className="absolute top-10 right-0 bg-blue-200 shadow-lg rounded-md  z-50 w-40 flex flex-col space-y-3 items-start">
+                    <Link to="/myorders">
+                      <button className="text-gray-700 hover:text-gray-900 h-10 px-4 py-2 flex items-center space-x-3 hover:bg-blue-300 w-40 rounded-lg">
+                        <BsBox className="h-6 w-6" />
+                        <span>My Orders</span>
+                      </button>
+                    </Link>
+                    <button
+                      onClick={(e) => logout(e)}
+                      className="text-gray-700 hover:text-gray-900 h-10 px-4 py-2 flex items-center space-x-3 hover:bg-blue-300 w-full rounded-lg">
+                      <BsBoxArrowInLeft className="h-7 w-7" />
+                      <span>Logout</span>
+                    </button>
+                  </div>
+                )}
               </div>
             ) : (
               <Link to="/auth">

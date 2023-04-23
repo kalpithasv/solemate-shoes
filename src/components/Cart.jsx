@@ -3,7 +3,7 @@ import shoe from '../assets/1.png';
 
 const Cart = () => {
   return (
-    <div className="outline outline-2 absolute top-[3rem] flex justify-between flex-col -left-[15rem] w-[15rem] h-[18rem] p-2 rounded-lg">
+    <div className="outline outline-2 absolute top-[2.5rem] flex justify-between flex-col -left-[14rem] w-[15rem] h-[18rem] p-2 rounded-lg z-50 bg-white">
       <div className="overflow-y-scroll flex flex-col space-y-2 rounded-lg scrollbar-hide  items-center">
         {/* Shoe 1 */}
         <div className="flex items-center  space-x-2 rounded-lg ">
