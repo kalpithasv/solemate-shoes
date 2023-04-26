@@ -5,7 +5,11 @@ import Shop from './pages/Shop';
 import Cart from './pages/Cart';
 import MyOrders from './pages/MyOrders';
 import { Routes, Route } from 'react-router-dom';
+
 import Product from './pages/Product';
+
+import Contact from './pages/Contact';
+
 
 const App = () => {
   return (
@@ -16,6 +20,7 @@ const App = () => {
       <Route path="cart" element={<Cart />} />
       <Route path="myorders" element={<MyOrders />} />
       <Route path="shop/:id" element={<Product />} />
+      <Route path="contact" element={<Contact />} />
     </Routes>
   );
 };

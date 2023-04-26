@@ -1,33 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-const Cart = () => {
+const CartPage = () => {
   const cartItems = useSelector((state) => state.cart.items);
-  const [totalPrice, setTotalPrice,setCartItems] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
+
   // Calculate total price of all items in cart
   const calculateTotalPrice = () => {
-    let total = 0;
-    cartItems.forEach((item) => {
-      total += item.price * item.quantity;
-    });
-    setTotalPrice(total);
+   // let total = 0;
+   // cartItems.forEach((item) => {
+     // total += item.price * item.quantity;
+  //  });
+  //  setTotalPrice(total);
   };
 
   // Update quantity of an item in cart
   const handleQuantityChange = (event, index) => {
-    const newItems = [...cartItems];
-    newItems[index].quantity = event.target.value;
-    setCartItems(newItems);
-    calculateTotalPrice();
+    // const newItems = [...cartItems];
+    // newItems[index].quantity = event.target.value;
+    // setCartItems(newItems);
+   // calculateTotalPrice();
   };
 
   // Remove an item from cart
   const handleRemoveItem = (index) => {
-    const newItems = [...cartItems];
-    newItems.splice(index, 1);
-    setCartItems(newItems);
-    calculateTotalPrice();
+    // const newItems = [...cartItems];
+   //  newItems.splice(index, 1);
+    // setCartItems(newItems);
+    // calculateTotalPrice();
   };
 
   return (
@@ -70,7 +71,7 @@ const Cart = () => {
                   Remove
                 </button>
               </div>
-            ))};
+            ))}
           </div>
           <div className="col-span-4">
             <div className="bg-gray-100 p-4 rounded">
@@ -83,9 +84,9 @@ const Cart = () => {
             </div>
           </div>
         </div>
-      )};
+      )}
     </div>
   );
 };
 
-export default Cart;
+
