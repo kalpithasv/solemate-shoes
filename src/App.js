@@ -5,6 +5,7 @@ import Shop from './pages/Shop';
 import Cart from './pages/Cart';
 import MyOrders from './pages/MyOrders';
 import { Routes, Route } from 'react-router-dom';
+import Product from './pages/Product';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <Route path="auth" element={<Auth />} />
       <Route path="cart" element={<Cart />} />
       <Route path="myorders" element={<MyOrders />} />
+      <Route path="shop/:id" element={<Product />} />
     </Routes>
   );
 };
