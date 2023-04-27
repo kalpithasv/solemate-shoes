@@ -6,6 +6,7 @@ import Cart from './pages/Cart';
 import MyOrders from './pages/MyOrders';
 import { Routes, Route } from 'react-router-dom';
 import Contact from './pages/Contact';
+import Prod from './components/Prod';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
       <Route path="cart" element={<Cart />} />
       <Route path="myorders" element={<MyOrders />} />
       <Route path="contact" element={<Contact />} />
+      <Route path="prod" element={<Prod />} />
     </Routes>
   );
 };
