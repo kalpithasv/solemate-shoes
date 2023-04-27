@@ -8,27 +8,27 @@ const CartPage = () => {
 
   // Calculate total price of all items in cart
   const calculateTotalPrice = () => {
-    let total = 0;
-    cartItems.forEach((item) => {
-      total += item.price * item.quantity;
-    });
-    setTotalPrice(total);
+   // let total = 0;
+   // cartItems.forEach((item) => {
+     // total += item.price * item.quantity;
+  //  });
+  //  setTotalPrice(total);
   };
 
   // Update quantity of an item in cart
   const handleQuantityChange = (event, index) => {
-    const newItems = [...cartItems];
-    newItems[index].quantity = event.target.value;
-    setCartItems(newItems);
-    calculateTotalPrice();
+    // const newItems = [...cartItems];
+    // newItems[index].quantity = event.target.value;
+    // setCartItems(newItems);
+   // calculateTotalPrice();
   };
 
   // Remove an item from cart
   const handleRemoveItem = (index) => {
-    const newItems = [...cartItems];
-    newItems.splice(index, 1);
-    setCartItems(newItems);
-    calculateTotalPrice();
+    // const newItems = [...cartItems];
+   //  newItems.splice(index, 1);
+    // setCartItems(newItems);
+    // calculateTotalPrice();
   };
 
   return (
