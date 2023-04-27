@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BsBag, BsXLg, BsList, BsBoxArrowInLeft, BsBox } from 'react-icons/bs';
 import '../index.css';
@@ -6,7 +6,6 @@ import { useDispatch } from 'react-redux';
 import { authActions } from '../store/auth-slice';
 import logo from '../assets/nikeimg.png';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import Cart from './Cart';
 
 const Navigation = () => {

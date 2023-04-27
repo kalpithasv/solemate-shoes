@@ -6,8 +6,8 @@ const ProductCard = ({ id, name, imageURL }) => {
     <Link to={`/shop/${id}`}>
       <div
         id={id}
-        className="w-full rounded-lg  lg:max-w-sm shadow-lg cursor-pointer overflow-hidden hover:bg-[#eee]">
-        <div className=" object-cover">
+        className="w-full rounded-lg  lg:max-w-sm shadow-lg cursor-pointer overflow-hidden bg-[#eee]">
+        <div className=" object-cover overflow-hidden">
           <img
             className="object-cover w-full "
             src={imageURL}

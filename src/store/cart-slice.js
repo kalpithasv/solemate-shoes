@@ -3,7 +3,6 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialCartState = {
   items: [],
   totalQuantity: 0,
-  isCartOpen: false,
   totalPrice: 0,
 };
 
@@ -54,11 +53,15 @@ const cartSlice = createSlice({
     removeItemFromCart(state, action) {
       const itemToBeRemoved = action.payload;
       const existingItem = state.items.find(
-        (item) => item.id === itemToBeRemoved
+        (item) =>
+          item.id === itemToBeRemoved.id && item.size === itemToBeRemoved.size
       );
 
       if (existingItem.quantity === 1) {
-        state.items = state.items.filter((item) => item.id !== itemToBeRemoved);
+        state.items = state.items.filter(
+          (item) =>
+            item.id !== itemToBeRemoved && item.size !== itemToBeRemoved.size
+        );
       } else {
         existingItem.quantity--;
         existingItem.totalPrice -= existingItem.price;
@@ -75,16 +78,14 @@ const cartSlice = createSlice({
     removeItemFromCartBySize(state, action) {
       const itemToBeRemoved = action.payload;
       const existingItem = state.items.find(
-        (item) =>
-          item.id === itemToBeRemoved.id && item.size === itemToBeRemoved.size
+        (item) => item.size === itemToBeRemoved.size
+      );
+      state.items = state.items.filter(
+        (item) => item.size !== existingItem.size
       );
 
       state.totalQuantity -= existingItem.quantity;
-      state.totalPrice -= existingItem.totalPrice;
-      state.items = state.items.filter(
-        (item) =>
-          item.id !== itemToBeRemoved.id && item.size !== itemToBeRemoved.size
-      );
+      state.totalPrice -= existingItem.price * existingItem.quantity;
     },
 
     clearCart(state) {

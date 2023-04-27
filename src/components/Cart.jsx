@@ -1,5 +1,4 @@
 import React from 'react';
-import shoe from '../assets/1.png';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
