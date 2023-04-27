@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 import Product from './pages/Product';
 
 import Contact from './pages/Contact';
+import Prod from './components/Prod';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -43,6 +44,7 @@ const App = () => {
       <Route path="myorders" element={<MyOrders />} />
       <Route path="shop/:id" element={<Product />} />
       <Route path="contact" element={<Contact />} />
+      <Route path="prod" element={<Prod />} />
     </Routes>
   );
 };
