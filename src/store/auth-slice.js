@@ -15,6 +15,14 @@ const authSlice = createSlice({
       state.user = action.payload;
       state.isAuthenticated = true;
     },
+
+    logout(state) {
+      state.user = null;
+      state.isAuthenticated = false;
+      state.email = '';
+      state.name = '';
+    },
+
     setIsAuthenticated(state, action) {
       state.isAuthenticated = action.payload;
     },
