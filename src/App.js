@@ -33,7 +33,7 @@ const App = () => {
   useEffect(() => {
     dispatch(productsActions.setShoeData(shoes));
     getUser();
-  }, [dispatch, getUser]);
+  }, []);
 
   return (
     <Routes>
