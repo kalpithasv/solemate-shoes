@@ -1,66 +1,39 @@
 import React from 'react';
 import shoe from '../assets/1.png';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Cart = () => {
+  const { items } = useSelector((state) => state.cart);
   return (
     <div className="outline outline-2 absolute top-[2.5rem] flex justify-between flex-col -left-[14rem] w-[15rem] h-[18rem] p-2 rounded-lg z-50 bg-white">
       <div className="overflow-y-scroll flex flex-col space-y-2 rounded-lg scrollbar-hide  items-center">
         {/* Shoe 1 */}
-        <div className="flex items-center  space-x-2 rounded-lg ">
-          <div className="block">
-            <img
-              src={shoe}
-              alt="shoeimg"
-              className="h-18 w-24 object-cover rounded-lg "
-            />
-          </div>
-          <div className="">
-            <h1>Nike pegasus </h1>
-            <div className="flex space-x-3 ">
-              <h1>160$</h1>
+        {items.map((item) => (
+          <div className="flex items-center  space-x-2 rounded-lg ">
+            <div className="block">
+              <img
+                src={item.imageURL}
+                alt="shoeimg"
+                className="h-18 w-24 object-cover rounded-lg "
+              />
+            </div>
+            <div className="">
+              <h1>{item.name} </h1>
+              <p>
+                <span>Size: </span> {item.size}
+              </p>
+              <div className="flex space-x-3 ">
+                <h1>{item.price}$</h1>
 
-              <h1 className="flex space-x-1">
-                <span>x</span>
-                <span>5</span>
-              </h1>
+                <h1 className="flex space-x-1">
+                  <span>x</span>
+                  <span>{item.quantity}</span>
+                </h1>
+              </div>
             </div>
           </div>
-        </div>
-        {/* Shoe 2 */}
-        <div className="flex items-center  space-x-2 rounded-lg  ">
-          <div className="block">
-            <img src={shoe} alt="shoeimg" className="h-18 w-24 rounded-lg" />
-          </div>
-          <div>
-            <h1>Nike pegasus</h1>
-            <div className="flex space-x-3 ">
-              <h1>160$</h1>
-
-              <h1 className="flex space-x-1">
-                <span>x</span>
-                <span>5</span>
-              </h1>
-            </div>
-          </div>
-        </div>
-        {/* Shoes 3 */}
-        <div className="flex items-center space-x-2 rounded-lg ">
-          <div className="block">
-            <img src={shoe} alt="shoeimg" className="h-18 w-24 rounded-lg" />
-          </div>
-          <div>
-            <h1>Nike pegasus</h1>
-            <div className="flex space-x-3 ">
-              <h1>160$</h1>
-
-              <h1 className="flex space-x-1">
-                <span>x</span>
-                <span>5</span>
-              </h1>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
       <Link to="/shop">
         <div className="mt-2">

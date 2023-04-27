@@ -11,15 +11,14 @@ import Cart from './Cart';
 
 const Navigation = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const { totalQuantity } = useSelector((state) => state.cart);
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isLogged = useSelector((state) => state.auth.isAuthenticated);
   const avatarUrl = useSelector((state) => state.auth.user?.photoURL);
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
-
-  const { user } = useSelector((state) => state.auth);
 
   const [showCart, setShowCart] = useState(false);
   const [showUser, setShowUser] = useState(false);
@@ -61,7 +60,7 @@ const Navigation = () => {
               className="relative cursor-pointer text-base block font-medium  text-gray-700 hover:text-gray-900 ">
               <BsBag className="h-6 w-6 z-10 blur-0 fliter drop-shadow-lg" />
               <span className="absolute top-[60%] right-[50%] inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none  transform translate-x-1/2 -translate-y-1/2  rounded-full">
-                10
+                {totalQuantity}
               </span>
               {showCart && <Cart />}
             </div>
@@ -78,7 +77,7 @@ const Navigation = () => {
                 />
                 {showUser && (
                   <div className="absolute top-10 right-0 bg-blue-200 shadow-lg rounded-md  z-50 w-40 flex flex-col space-y-3 items-start">
-                    <Link to="/myorders">
+                    <Link to="/cart">
                       <button className="text-gray-700 hover:text-gray-900 h-10 px-4 py-2 flex items-center space-x-3 hover:bg-blue-300 w-40 rounded-lg">
                         <BsBox className="h-6 w-6" />
                         <span>My Orders</span>

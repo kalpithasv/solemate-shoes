@@ -22,24 +22,26 @@ const cartSlice = createSlice({
     },
     addItemToCart(state, action) {
       const newItem = action.payload;
-
-      const existingItem = state.items.find((item) => item.id === newItem.id);
+      const existingItem = state.items.find(
+        (item) => item.id === newItem.id && item.size === newItem.size
+      );
       if (existingItem) {
-        existingItem.quantity++;
+        existingItem.quantity += newItem.quantity;
         existingItem.totalPrice += newItem.price;
       } else {
         state.items.push({
           id: newItem.id,
-          title: newItem.title,
+          name: newItem.name,
           price: newItem.price,
-          imageUrl: newItem.imageUrl,
-          quantity: 1,
-          imgageUrl: newItem.imgageUrl,
+          imageURL: newItem.imageURL,
+          size: newItem.size,
+          quantity: newItem.quantity,
           totalPrice: newItem.price,
         });
       }
-      state.totalQuantity++;
-      state.totalPrice = Number(state.totalPrice) + Number(newItem.price);
+      state.totalQuantity += newItem.quantity;
+      state.totalPrice =
+        Number(state.totalPrice) + Number(newItem.price) * newItem.quantity;
       localStorage.setItem(
         'cartItems',
         JSON.stringify({
@@ -68,6 +70,21 @@ const cartSlice = createSlice({
         state.isCartOpen = false;
       }
       localStorage.setItem('cartItems', JSON.stringify(state.items));
+    },
+
+    removeItemFromCartBySize(state, action) {
+      const itemToBeRemoved = action.payload;
+      const existingItem = state.items.find(
+        (item) =>
+          item.id === itemToBeRemoved.id && item.size === itemToBeRemoved.size
+      );
+
+      state.totalQuantity -= existingItem.quantity;
+      state.totalPrice -= existingItem.totalPrice;
+      state.items = state.items.filter(
+        (item) =>
+          item.id !== itemToBeRemoved.id && item.size !== itemToBeRemoved.size
+      );
     },
 
     clearCart(state) {

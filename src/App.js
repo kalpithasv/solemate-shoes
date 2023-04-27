@@ -10,11 +10,13 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { authActions } from './store/auth-slice';
 import { useNavigate } from 'react-router-dom';
+import shoes from './shoesData';
 
 import Product from './pages/Product';
 
 import Contact from './pages/Contact';
-import Prod from './components/Prod';
+import Prod from './components/ProductCard';
+import { productsActions } from './store/products-slice';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -26,12 +28,12 @@ const App = () => {
     if (!user) return;
     dispatch(authActions.setUser(user));
     dispatch(authActions.setIsAuthenticated(true));
-    navigate('/');
   };
 
   useEffect(() => {}, [user]);
 
   useEffect(() => {
+    dispatch(productsActions.setShoeData(shoes));
     getUser();
   }, []);
 
