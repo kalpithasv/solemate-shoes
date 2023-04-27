@@ -36,7 +36,7 @@ const Auth = () => {
       console.log(providerData[0]);
 
       dispatch(authActions.setUser(providerData[0]));
-      navigate('/mens');
+      navigate('/');
       await setDoc(doc(db, 'users', providerData[0].uid), {
         name: providerData[0].displayName,
         email: providerData[0].email,
@@ -56,7 +56,7 @@ const Auth = () => {
       } = await createUserWithEmailAndPassword(firebaseAuth, email, password);
       await updateProfile(firebaseAuth.currentUser, { displayName: username });
       dispatch(authActions.setUser(providerData[0]));
-      navigate('/mens');
+      navigate('/');
       localStorage.setItem('user', JSON.stringify(providerData[0]));
       setEmail('');
       setPassword('');
@@ -80,7 +80,7 @@ const Auth = () => {
         user: { providerData },
       } = await signInWithEmailAndPassword(firebaseAuth, email, password);
       dispatch(authActions.setUser(providerData[0]));
-      navigate('/mens');
+      navigate('/');
       localStorage.setItem('user', JSON.stringify(providerData[0]));
       setEmail('');
       setPassword('');

@@ -1,5 +1,6 @@
 import React from 'react';
 import shoe from '../assets/1.png';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
   return (
@@ -61,11 +62,13 @@ const Cart = () => {
           </div>
         </div>
       </div>
-      <div className="mt-2">
-        <button className="bg-gradient-to-r from-blue-500 to-blue-200    w-full py-2 rounded-lg">
-          Checkout
-        </button>
-      </div>
+      <Link to="/shop">
+        <div className="mt-2">
+          <button className="bg-gradient-to-r from-blue-500 to-blue-200    w-full py-2 rounded-lg">
+            Checkout
+          </button>
+        </div>
+      </Link>
     </div>
   );
 };

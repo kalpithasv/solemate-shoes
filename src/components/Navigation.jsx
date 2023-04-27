@@ -24,28 +24,9 @@ const Navigation = () => {
   const [showCart, setShowCart] = useState(false);
   const [showUser, setShowUser] = useState(false);
 
-  const getUser = () => {
-    let user = localStorage.getItem('user');
-    user = JSON.parse(user);
-    if (!user) return;
-    dispatch(authActions.setUser(user));
-    dispatch(authActions.setIsAuthenticated(true));
-    navigate('/');
-  };
-
   const logout = (e) => {
-    console.log('logout');
-    // e.preventDefault();
-    // localStorage.removeItem('user');
-    // dispatch(authActions.setUser(null));
-    // navigate('/auth');
+    dispatch(authActions.logout());
   };
-
-  useEffect(() => {}, [user]);
-
-  useEffect(() => {
-    getUser();
-  }, []);
 
   const categories = [
     { name: 'Mens', href: '/shop/mens' },
