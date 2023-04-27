@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { cartActions } from '../store/cart-slice';
@@ -18,8 +18,9 @@ const Cart = () => {
     dispatch(cartActions.addItemToCart(itemToAdd));
   };
 
-  const decrementQuantity = (id) => {
-    dispatch(cartActions.removeItemFromCart(id));
+  const decrementQuantity = (id, size) => {
+    const itemToRemove = { id, size };
+    dispatch(cartActions.removeItemFromCart(itemToRemove));
   };
 
   const removeItem = (item) => {
@@ -54,7 +55,7 @@ const Cart = () => {
                 <div>
                   <div className=" flex outline outline-2 outline-blue-500 items-center space-x-5 rounded-md px-2 py-2 ">
                     <button
-                      onClick={() => decrementQuantity(item.id)}
+                      onClick={() => decrementQuantity(item.id, item.size)}
                       className="p-[0.15rem]  bg-blue-500  text-white text-xl rounded-md">
                       <BsDash />
                     </button>

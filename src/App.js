@@ -9,7 +9,6 @@ import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { authActions } from './store/auth-slice';
-import { useNavigate } from 'react-router-dom';
 import shoes from './shoesData';
 
 import Product from './pages/Product';
@@ -20,7 +19,6 @@ import { productsActions } from './store/products-slice';
 
 const App = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const user = useSelector((state) => state.auth.user);
   const getUser = () => {
     let user = localStorage.getItem('user');
