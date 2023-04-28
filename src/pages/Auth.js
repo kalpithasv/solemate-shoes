@@ -95,7 +95,7 @@ const Auth = () => {
         <img
           src={AuthImg}
           alt="AuthImg"
-          className="h-full w-full object-top object-cover overflow-hidden shadow-lg"
+          className="h-full w-full object-bottom object-cover overflow-hidden shadow-lg"
         />
       </div>
       <div className="flex px-5 justify-center items-center md:w-1/2 w-full ">
