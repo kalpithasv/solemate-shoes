@@ -136,7 +136,7 @@ const Auth = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
                   id="email"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="john.doe@company.com" required placeholder="password"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="john.doe@company.com" required placeholder="password"
                   placeholder="Email"
                 />
                 <label
@@ -152,7 +152,7 @@ const Auth = () => {
                   onChange={(e) => setPassword(e.target.value)}
                   value={password}
                   id="password"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="john.doe@company.com" required placeholder="password"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="john.doe@company.com" required placeholder="password"
                 />
                 <label
                   htmlFor="password"
@@ -173,7 +173,7 @@ const Auth = () => {
             ) : (
               <button 
                 type="button" 
-                class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                 onClick={(e) => signInWithEmail(e)}>
                 Sign In
               </button>
@@ -191,7 +191,7 @@ const Auth = () => {
             </p>
             <p className=" text-center ">Or</p>
             <div className="flex gap-7">
-            <button type="button" class="text-black bg-[#fff] hover:bg-[#6ab9f6]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-20 py-1 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-4 mb-2">
+            <button type="button" className="text-black bg-[#fff] hover:bg-[#6ab9f6]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-20 py-1 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-4 mb-2">
             <img
                   src={GoogleLogo}
                   alt="Google Logo"
