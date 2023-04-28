@@ -1,17 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BsPlus, BsDash } from 'react-icons/bs';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { cartActions } from '../store/cart-slice';
+import { productsActions } from '../store/products-slice';
+import shoes from '../shoesData';
 
 const Product = () => {
   const dispatch = useDispatch();
   const location = useLocation();
+
+  dispatch(productsActions.setShoeData(shoes));
+
+  const shoeData = useSelector((state) => state.products.shoeData);
+  useEffect(() => {}, [shoeData]);
+
   const ShoeID = location.pathname.split('/')[2];
-  const { name, imageURL, price } = useSelector(
-    (state) => state.products.shoeData[ShoeID - 1]
-  );
+  const selectedShoes = shoeData[ShoeID - 1];
 
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState(7);
@@ -28,9 +34,9 @@ const Product = () => {
   const addToCart = () => {
     const item = {
       id: ShoeID,
-      name,
-      imageURL,
-      price,
+      name: selectedShoes.name,
+      imageURL: selectedShoes.imageURL,
+      price: selectedShoes.price,
       quantity,
       size,
     };
@@ -44,14 +50,16 @@ const Product = () => {
     <div className=" h-full min-h-screen max-w-7xl  mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row space-y-5 md:space-x-5">
       <div className=" flex items-center justify-center md:flex-1 md:items-start">
         <img
-          src={imageURL}
+          src={selectedShoes.imageURL}
           alt="product"
           className=" max-h-[20rem] w-full object-cover"
         />
       </div>
       <div className="flex flex-col space-y-7 flex-1">
         <div className="flex flex-col space-y-2">
-          <h2 className="text-gray-800 font-bold text-2xl">{name}</h2>
+          <h2 className="text-gray-800 font-bold text-2xl">
+            {selectedShoes.name}
+          </h2>
           <p className="text-base">⭐⭐⭐⭐⭐</p>
           <p className="text-base text-gray-500">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
@@ -122,7 +130,7 @@ const Product = () => {
           </div>
         </div>
         <div className="flex justify-between w-full items-center space ">
-          <p className="font-bold text-2xl">{price} $</p>
+          <p className="font-bold text-2xl">{selectedShoes.price} $</p>
           <div className=" flex outline outline-2 outline-blue-500 items-center space-x-5 rounded-md px-2 py-2 ">
             <button
               onClick={() => handleDecrement()}

@@ -6,16 +6,16 @@ const ProductCard = ({ id, name, imageURL }) => {
     <Link to={`/shop/${id}`}>
       <div
         id={id}
-        className="rounded-lg shadow-lg cursor-pointer overflow-hidden bg-[#eee] w-[20rem] ">
+        className="rounded-lg flex flex-col shadow-lg cursor-pointer overflow-hidden bg-[#eee]  h-[20rem] space-y-5">
         <div className="overflow-hidden">
           <img
-            className="object-cover w-full  h-[15rem]  rounded-lg hover:scale-105 transition duration-500 ease-in-out"
+            className="object-cover  w-full  h-[15rem]  rounded-lg hover:scale-105 transition duration-500 ease-in-out"
             src={imageURL}
             alt="shoe-img"
           />
         </div>
 
-        <div className="p-4 ">
+        <div className=" px-8 pb-2">
           <h4 className="text-xl text-center font-semibold tracking-tight text-blue-600">
             {name}
           </h4>
