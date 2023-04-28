@@ -36,8 +36,8 @@ const Shop = () => {
 
   return (
     <div className="pl-6 lg:pl-8 pr-0  h-[calc(100vh-4rem)]  ">
-      <div className="grid grid-cols-12   text-black text-xl  gap-10 ">
-        <div className="col-span-3 my-6 h-[calc(100vh-7rem)] overflow-y-scroll scrollbar-hide bg-gray-200 px-4 rounded-lg">
+      <div className="grid grid-cols-13   text-black text-xl  gap-10 ">
+        <div className=" col-span-3  shadow-md   my-6 h-[calc(100vh-7rem)] overflow-y-scroll scrollbar-hide bg-gray-200 px-4 rounded-lg">
           <div className="py-6">
             <h1 className="text-3xl font-bold text-center pb-6">Filters</h1>
             <div className="flex flex-col space-y-10">
@@ -154,9 +154,11 @@ const Shop = () => {
             </div>
           </div>
         </div>
-        <div className="col-span-9  overflow-y-scroll  pb-6 pr-3 h-[calc(100vh-4.25rem)] ">
+        <div className="col-span-10  mx-auto overflow-y-scroll  pb-6 pr-3 h-[calc(100vh-4.25rem)] ">
           <div className="flex flex-col space-y-3 py-6">
-            <h1 className="text-5xl captilize">Explore Your Shoes</h1>
+            <h1 className="text-5xl captilize drop-shadow  ">
+              Explore Your Shoes
+            </h1>
             <p className="text-lg text-gray-600">
               Get the best deal on your favorite shoes
             </p>
