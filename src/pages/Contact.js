@@ -1,45 +1,8 @@
 import React from 'react'
-import { message } from "antd";
-import { useLoadingContext } from "react-router-loading"
 const Contact = () => {
-  return (
-    const Contact = () => {
-  const [messageApi, messageContextHolder] = message.useMessage();
-  const Loading = useLoadingContext();
-  Loading.done();
   const handleFormSubmit = (e) => {
-    e.preventDefault();
-    const name = formData.get("name");
-    const email = formData.get("email");
-    const subject = formData.get("subject");
-    const message = formData.get("message");
-
-    if (name === "" || email === "" || subject === "" || message === "") {
-      messageApi.info("Please fill all the required fields!");
-      return;
+    console.log("Form submitted Successfully");
     }
-    const data = new FormData();
-    data.append("name", name);
-    data.append("email", email);
-    data.append("subject", subject);
-    data.append("message", message);
-    data.append("send", true);
-
-    fetch(ENDPOINT, {
-      method: "POST",
-      body: data,
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.status === 200) {
-          messageApi.success(data.message, 5);
-          e.target.reset();
-        } else {
-          messageApi.error(data.error, 5);
-        }
-      });
-  };
-
   return (
     <>
       <div className="my-12 w-full flex gap-4 flex-col items-center justify-center">

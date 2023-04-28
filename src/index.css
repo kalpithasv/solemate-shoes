@@ -5,6 +5,25 @@
   font-family: sans-serif;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+Track ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #9999997f;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #77777782;
+  cursor: pointer;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -15,9 +34,9 @@
     @apply relative;
   }
   .desktop-main-menu::after {
-    @apply content-[''] absolute bottom-0 left-0 w-full h-[2px] bg-[#221fb3] transform scale-x-0 transition-all duration-500 ease-out;
+    @apply content-[''] absolute bottom-0 left-0 w-full h-[2px] bg-[#221fb3] rounded-full transform scale-x-0 transition-all duration-500 ease-out;
   }
   .desktop-main-menu:hover::after {
-    @apply transform scale-x-[100%] transition;
+    @apply transform scale-x-[100%]  transition;
   }
 }
