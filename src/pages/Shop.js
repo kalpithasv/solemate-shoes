@@ -132,14 +132,14 @@ const Shop = () => {
             </div>
           </div>
         </div>
-        <div className="col-span-9  justify-evenly overflow-y-scroll  pb-6  h-[calc(100vh-4.25rem)] ">
+        <div className="col-span-9  overflow-y-scroll  pb-6 pr-3 h-[calc(100vh-4.25rem)] ">
           <div className="flex flex-col space-y-3 py-6">
             <h1 className="text-5xl captilize">Explore Your Shoes</h1>
             <p className="text-lg text-gray-600">
               Get the best deal on your favorite shoes
             </p>
           </div>
-          <div className="flex gap-5 flex-wrap ">
+          <div className="flex gap-5 flex-wrap  justify-evenly">
             {shoeData.map((shoe) => (
               <ProductCard
                 key={shoe.id}
