@@ -11,14 +11,10 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { authActions } from './store/auth-slice';
 import shoes from './shoesData';
-
 import Product from './pages/Product';
-
 import Contact from './pages/Contact';
 import Prod from './components/ProductCard';
 import { productsActions } from './store/products-slice';
-import { FaBusinessTime,FaAward } from "react-icons/fa";
-import { MdPriceCheck } from "react-icons/md";
 
 const App = () => {
   const dispatch = useDispatch();
