@@ -154,7 +154,7 @@ const Shop = () => {
             </div>
           </div>
         </div>
-        <div className="col-span-10  mx-auto overflow-y-scroll  pb-6 pr-3 h-[calc(100vh-4.25rem)] ">
+        <div className="col-span-10 overflow-y-scroll  pb-6 pr-3 h-[calc(100vh-4.25rem)] ">
           <div className="flex flex-col space-y-3 py-6">
             <h1 className="text-5xl captilize drop-shadow  ">
               Explore Your Shoes
@@ -164,17 +164,23 @@ const Shop = () => {
             </p>
           </div>
           <div>
-            <div className="grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5 pr-5">
-              {filteredShoes?.map((shoe) => (
-                <ProductCard
-                  key={shoe.id}
-                  id={shoe.id}
-                  name={shoe.name}
-                  price={shoe.price}
-                  imageURL={shoe.imageURL}
-                />
-              ))}
-            </div>
+            {filteredShoes.length === 0 ? (
+              <div className="flex items-center  w-full justify-center text-2xl font-bold text-gray-500 ">
+                No Shoes Found
+              </div>
+            ) : (
+              <div className="grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5 pr-5">
+                {filteredShoes?.map((shoe) => (
+                  <ProductCard
+                    key={shoe.id}
+                    id={shoe.id}
+                    name={shoe.name}
+                    price={shoe.price}
+                    imageURL={shoe.imageURL}
+                  />
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
