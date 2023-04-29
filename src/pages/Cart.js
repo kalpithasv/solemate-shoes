@@ -47,6 +47,7 @@ const Cart = () => {
   const getOrders = async () => {
     const docRef = doc(db, 'users', user.uid);
     const docSnap = await getDoc(docRef);
+    dispatch(orderActions.clearOrders());
     dispatch(orderActions.setOrders(docSnap.data().orders));
   };
 
