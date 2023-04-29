@@ -75,16 +75,16 @@ const Navigation = () => {
                   className="h-7 w-7  shadow-lg cursor-pointer rounded-full"
                 />
                 {showUser && (
-                  <div className="absolute top-10 right-0 bg-blue-200 shadow-lg rounded-md  z-50 w-40 flex flex-col space-y-3 items-start">
+                  <div className="absolute top-10 right-0 bg-gradient-to-r from-purple-200 to-indigo-600  opacity-90  shadow-lg rounded-md  z-50 w-40 flex flex-col space-y-3 items-start">
                     <Link to="/myorders">
-                      <button className="text-gray-700 hover:text-gray-900 h-10 px-4 py-2 flex items-center space-x-3 hover:bg-blue-300 w-40 rounded-lg">
+                      <button className=" hover:text-white duration-300 transition-all h-10 px-4 py-2 flex items-center space-x-3 w-40 rounded-lg">
                         <BsBox className="h-6 w-6" />
                         <span>My Orders</span>
                       </button>
                     </Link>
                     <button
                       onClick={(e) => logout(e)}
-                      className="text-gray-700 hover:text-gray-900 h-10 px-4 py-2 flex items-center space-x-3 hover:bg-blue-300 w-full rounded-lg">
+                      className="hover:text-white duration-300 transition-all to-purple-200 from-indigo-600 h-10 px-4 py-2 flex items-center space-x-3 w-full rounded-lg">
                       <BsBoxArrowInLeft className="h-7 w-7" />
                       <span>Logout</span>
                     </button>

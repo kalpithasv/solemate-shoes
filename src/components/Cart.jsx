@@ -38,7 +38,7 @@ const Cart = () => {
       </div>
       <Link to="/cart">
         <div className="mt-2">
-          <button className="bg-gradient-to-r from-blue-500 to-blue-200    w-full py-2 rounded-lg">
+          <button className="bg-gradient-to-r opacity-90  from-indigo-700 via-blue-600 to-blue-400  text-white hover:shadow-xl transition-all duration-200 shadow-purple-500/50    w-full py-2 rounded-lg">
             Checkout
           </button>
         </div>
