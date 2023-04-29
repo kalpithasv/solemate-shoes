@@ -4,10 +4,15 @@ import { Link } from 'react-router-dom';
 import { cartActions } from '../store/cart-slice';
 import { useDispatch } from 'react-redux';
 import { BsDash, BsPlus, BsTrash3 } from 'react-icons/bs';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { db } from '../utils/firebase';
+import { orderActions } from '../store/order-slice';
 
 const Cart = () => {
   const dispatch = useDispatch();
   const { items, totalPrice } = useSelector((state) => state.cart);
+  const { user } = useSelector((state) => state.auth);
+  const { orders } = useSelector((state) => state.order);
 
   const incrementQuantity = (item) => {
     const id = item.id;
@@ -25,6 +30,24 @@ const Cart = () => {
 
   const removeItem = (item) => {
     dispatch(cartActions.removeItemFromCartBySize(item));
+  };
+
+  const placeOrder = async () => {
+    await setDoc(
+      doc(db, 'users', user.uid),
+      {
+        orders: [...orders, { items, totalPrice }],
+      },
+      { merge: true }
+    );
+    dispatch(cartActions.clearCart());
+    await getOrders();
+  };
+
+  const getOrders = async () => {
+    const docRef = doc(db, 'users', user.uid);
+    const docSnap = await getDoc(docRef);
+    dispatch(orderActions.setOrders(docSnap.data().orders));
   };
 
   return (
@@ -85,7 +108,9 @@ const Cart = () => {
               <p className="text-gray-600 mb-4">
                 Total price: ${totalPrice.toFixed(2)}
               </p>
-              <button className="bg-blue-500 text-white px-4 py-2 rounded font-bold">
+              <button
+                onClick={() => placeOrder()}
+                className="bg-blue-500 text-white px-4 py-2 rounded font-bold">
                 Checkout
               </button>
             </div>
