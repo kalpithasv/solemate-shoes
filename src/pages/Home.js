@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Header from '../components/Header';
 import home1 from '../assets/home1.png';
@@ -5,7 +6,7 @@ import home3 from '../assets/home3.png';
 import home4 from '../assets/home4.png';
 import arr1 from '../assets/curly-arrow.svg';
 import logo from '../assets/nikeimg.png';
-import { FaAward, FaBusinessTime, FaFacebookF } from 'react-icons/fa';
+import { FaAward, FaBusinessTime } from 'react-icons/fa';
 import { MdPriceCheck } from 'react-icons/md';
 import { BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs';
 
@@ -87,7 +88,6 @@ const Home = () => {
       slug: 'nike-phantom-vision-elite-dynamic-fit-fg',
     },
   ];
-  // bg-gradient-to-r from-black via-gray-800 to-black
   return (
     <div className="bg-[#eee]">
       <Header />

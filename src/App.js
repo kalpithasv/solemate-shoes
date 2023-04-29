@@ -13,7 +13,6 @@ import { authActions } from './store/auth-slice';
 import shoes from './shoesData';
 import Product from './pages/Product';
 import Contact from './pages/Contact';
-import Prod from './components/ProductCard';
 import { productsActions } from './store/products-slice';
 import { cartActions } from './store/cart-slice';
 import { doc, getDoc } from 'firebase/firestore';
@@ -67,12 +66,15 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="shop" element={<Shop />} />
+      <Route path="shop/men" element={<Shop />} />
+      <Route path="shop/women" element={<Shop />} />
+      <Route path="shop/kids" element={<Shop />} />
+      <Route path="shop/casual" element={<Shop />} />
       <Route path="auth" element={<Auth />} />
       <Route path="cart" element={<Cart />} />
       <Route path="myorders" element={<MyOrders />} />
       <Route path="shop/:id" element={<Product />} />
       <Route path="contact" element={<Contact />} />
-      <Route path="prod" element={<Prod />} />
     </Routes>
   );
 };
