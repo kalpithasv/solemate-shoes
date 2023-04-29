@@ -55,7 +55,12 @@ const Cart = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h1 className="text-3xl font-bold mb-8 text-center py-6">Cart</h1>
       {items.length === 0 ? (
-        <p>Your cart is empty</p>
+        <div style="width:100%;height:0;padding-bottom:100%;position:relative;">
+          <iframe src="https://giphy.com/embed/SMEGj0pb5eUKcnot8x" width="100%" height="100%" style="position:absolute" class="giphy-embed" allowFullScreen>
+          </iframe>
+          <a href="https://giphy.com/gifs/digital-seven-cart-add-to-lightining-SMEGj0pb5eUKcnot8x"> </a>
+          <p>Your cart is empty</p>
+        </div>
       ) : (
         <div className="grid grid-cols-12 space-x-10">
           <div className="col-span-8">
