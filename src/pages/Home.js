@@ -4,11 +4,13 @@ import home1 from '../assets/home1.png';
 import home2 from '../assets/home2.png';
 import home3 from '../assets/home3.png';
 import home4 from '../assets/home4.png';
+import arr1 from '../assets/arr1.png';
+import logo from '../assets/nikeimg.png';
 import { FaAward, FaBusinessTime } from 'react-icons/fa';
 import { MdPriceCheck } from 'react-icons/md';
 const Home = () => {
   return (
-    <div className="overflow-x-hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-[#eee]">
+<div className="overflow-x-hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-[#eee]">
       <Header />
       {/* Banner */}
       <div class="flex flex-col space-y-[7rem] pt-[7rem]">
@@ -151,7 +153,135 @@ const Home = () => {
           </div>
         </div>
       </div>
+    {/* Banner 2 */}
+    <div className="overflow-x-hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white bg-gradient-to-r from-black via-gray-800 to-black"> 
+      <div className="flex flex-col space-y-20">
+      <div className="flex ">
+          <div className="relative w-1/2 flex items-bottom justify-center">
+            <div className="w-[20rem] h-[20rem] bg-gradient-to-bl from-orange-600 via-orange-400 to-yellow-300 absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] rounded-full hover:bg-gradient-to-br -z-5"></div>
+            <img src={home3} alt="" className="z-50 rotate-[5deg] scale-50" />
+          </div>
+          <div className="w-1/2 flex flex-col space-y-10 space-x-25">
+            <div className="text-4xl  text-white font-bold flex flex-col leading-1">
+              <span>We Provide High </span>
+              <span>Quality Footwear.</span>
+            </div>
+
+            <div className="text-white text-md">
+              <span className="leading-2">
+              We know that shopping online can sometimes be a hassle, 
+              which is why we offer free shipping, easy returns, and responsive customer support.
+              Our goal is to make your experience as enjoyable and stress-free as possible,
+              so you can focus on finding the perfect pair of shoes.
+              </span>
+            </div>
+            <button className="bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 shadow-lg shadow-lime-500/50 dark:shadow-lg dark:shadow-lime-800/80  px-4 py-2 rounded text-gray-900 font-bold">
+                Shop Now
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="relative h-70 w-70 ...">
+          <div class="absolute -top-20 right-70 left-40 h-50 w-50 ...">
+             <img src={arr1} alt="" className="z-50 rotate-[-35deg] scale-105 float-left" />
+             
+          </div>
+          <div class="box-border h-50 w-80 p-10 border-1 bg-gradient-to-r from-gray-100 to-gray-600 hover:bg-gradient-to-bl -z-5 rounded-xl absolute -top-10 right-40 left-30 h-50 w-50 text-gray-900 font-bold">
+             <p>Hi, I'm Cortex </p>
+             <p>Best selling running shoe</p>
+              <p> ⭐⭐⭐⭐⭐</p>
+              <p> $ 150</p>
+          </div>
     </div>
+    
+    </div>
+    {/* grid */}
+    <div className="overflow-x-hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-[#eee] "> 
+    <br />
+    <br />
+    <br />
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+    <div>
+        <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="" />
+    </div>
+    <div>
+        <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="" />
+    </div>
+    <div>
+        <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="" />
+    </div>
+    <div>
+        <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="" />
+    </div>
+    <div>
+        <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="" />
+    </div>
+    <div>
+        <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="" />
+    </div>
+    <div>
+        <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="" />
+    </div>
+    <div>
+        <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="" />
+    </div>
+    <div>
+        <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="" />
+    </div>
+    <div>
+        <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="" />
+    </div>
+    <div>
+        <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="" />
+    </div>
+    <div>
+        <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="" />
+    </div>
+</div>
+    </div> 
+    {/* Footer */}  
+    <br />
+    <br /> 
+    <div className="grid grid-cols-2 bg-[#1E242B] rounded-3xl mx-25 mb-15">
+        <div className="px-10 py-8">
+          <div className="flex-shrink-0 flex items-center justify-start flex-1 leading-3 font-bold flex text-2xl m-2">
+              <img className="h-8 w-auto" src={logo} alt="Logo" />
+          </div>
+            <span className="text-white">SOLEMATE SHOES</span>
+          </div>
+          <div className="text-white pt-8">
+            Curious to know more about us?
+            <br /> follow out our social media
+          </div>
+          <div></div>
+        
+       <div className="grid grid-cols-2 mx-4 my-3 py-8">
+          <div className="">
+            <div className="font-semibold text-white pb-4">OUR POLICIES</div>
+            <div className="text-white py-2">
+              <a href="#">Privacy Policy</a>
+            </div>
+            <div className="text-white py-2">
+              <a href="#">Term of Use</a>
+            </div>
+            <div className="text-white py-2">
+              <a href="#">Term of Order</a>
+            </div>
+          </div>
+          <div>
+            <div className="font-semibold text-white pb-4">CONTACT US ON</div>
+            <div className="text-white py-2">
+              <a href="tel:7418692714">+91 7418692714</a>
+            </div>
+            <div className="text-white py-2">
+              <a href="#">solemateshoes@gmail.com</a>
+            </div>
+          </div>
+        </div>
+     </div>
+     <br />
+</div>
+    
   );
 };
 
