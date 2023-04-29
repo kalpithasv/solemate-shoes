@@ -8,13 +8,23 @@ import 'primereact/resources/primereact.min.css';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import shoes from '../shoesData';
+import { productsActions } from '../store/products-slice';
+import { useDispatch } from 'react-redux';
 
 const Shop = () => {
-  const { shoeData } = useSelector((state) => state.products);
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { shoeData } = useSelector((state) => state?.products);
   const [filteredCategory, setFilteredCategory] = useState('All');
   const [filteredGender, setFilteredGender] = useState('All');
   const [filteredPrice, setFilteredPrice] = useState([0, 100]);
   const [filteredShoes, setFilteredShoes] = useState([]);
+
+  useEffect(() => {
+    dispatch(productsActions.setShoeData(shoes));
+  }, [shoeData]);
 
   const filterShoes = () => {
     return shoeData?.filter((shoe) => {
@@ -32,21 +42,18 @@ const Shop = () => {
     });
   };
 
-  const location = useLocation();
-  const navigate = useNavigate();
-
   useEffect(() => {
     const category = location.pathname.split('/')[2];
-    if (category.toLowerCase() === 'casual') {
+    if (category?.toLowerCase() === 'casual') {
       setFilteredGender('All');
       setFilteredCategory('casual');
-    } else if (category.toLowerCase() !== filteredGender.toLowerCase()) {
+    } else if (category?.toLowerCase() !== filteredGender.toLowerCase()) {
       if (category) {
         setFilteredCategory('All');
         setFilteredGender(category);
       }
     }
-  }, [location.pathname]);
+  }, [location?.pathname]);
 
   useEffect(() => {
     setFilteredShoes(filterShoes());

@@ -7,6 +7,7 @@ import { BsDash, BsPlus, BsTrash3 } from 'react-icons/bs';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { db } from '../utils/firebase';
 import { orderActions } from '../store/order-slice';
+import cartImg from '../assets/cart.png';
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -55,7 +56,17 @@ const Cart = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h1 className="text-3xl font-bold mb-8 text-center py-6">Cart</h1>
       {items.length === 0 ? (
-        <p>Your cart is empty</p>
+        <div className="flex justify-center flex-col space-y-5">
+          <img src={cartImg} alt="empty cart" className="w-24 mx-auto" />
+          <p className="text-center text-gray-600 text-xl mt-4">
+            Your cart is empty
+          </p>
+          <button className="px-4 py-2 outline outline-2 flex mx-auto justify-center w-fit rounded-lg ">
+            <Link to="/shop" className="text-blue-500 font-bold">
+              Go to shop
+            </Link>
+          </button>
+        </div>
       ) : (
         <div className="grid grid-cols-12 space-x-10">
           <div className="col-span-8">
