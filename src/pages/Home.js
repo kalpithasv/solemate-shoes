@@ -9,6 +9,7 @@ import logo from '../assets/nikeimg.png';
 import { FaAward, FaBusinessTime } from 'react-icons/fa';
 import { MdPriceCheck } from 'react-icons/md';
 import { BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const shoes = [
@@ -269,10 +270,11 @@ const Home = () => {
                 finding the perfect pair of shoes.
               </span>
             </div>
-
-            <button className="bg-gradient-to-r opacity-90 w-fit from-indigo-700 via-blue-600 to-blue-400    shadow-purple-500/50  duration-200 transition-all  px-10 py-3 rounded  font-bold text-white hover:shadow-lg">
-              Shop Now
-            </button>
+            <Link to={'/shop'}>
+              <button className="bg-gradient-to-r opacity-90 w-fit from-indigo-700 via-blue-600 to-blue-400    shadow-purple-500/50  duration-200 transition-all  px-10 py-3 rounded  font-bold text-white hover:shadow-lg">
+                Shop Now
+              </button>
+            </Link>
           </div>
         </div>
       </div>
