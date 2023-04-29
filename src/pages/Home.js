@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../components/Header';
 import home1 from '../assets/home1.png';
+import home3 from '../assets/home3.png';
 import home4 from '../assets/home4.png';
 import arr1 from '../assets/arr1.png';
 import logo from '../assets/nikeimg.png';
