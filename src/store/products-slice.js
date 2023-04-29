@@ -9,6 +9,22 @@ const productsSlice = createSlice({
     setShoeData(state, action) {
       state.shoeData = action.payload;
     },
+
+    setFilteredCategory(state, action) {
+      state.filteredCategory = action.payload;
+    },
+
+    setFilteredShoes(state, action) {
+      state.filteredShoes = action.payload;
+    },
+
+    setFilteredPrice(state, action) {
+      state.filteredPrice = action.payload;
+    },
+
+    setFilteredGender(state, action) {
+      state.filteredGender = action.payload;
+    },
   },
 });
 

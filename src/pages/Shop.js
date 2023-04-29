@@ -6,6 +6,8 @@ import { Checkbox } from 'primereact/checkbox';
 import { Slider } from 'primereact/slider';
 import 'primereact/resources/primereact.min.css';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
+import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Shop = () => {
   const { shoeData } = useSelector((state) => state.products);
@@ -30,8 +32,37 @@ const Shop = () => {
     });
   };
 
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const category = location.pathname.split('/')[2];
+    if (category.toLowerCase() === 'casual') {
+      setFilteredGender('All');
+      setFilteredCategory('casual');
+    } else if (category.toLowerCase() !== filteredGender.toLowerCase()) {
+      if (category) {
+        setFilteredCategory('All');
+        setFilteredGender(category);
+      }
+    }
+  }, [location.pathname]);
+
   useEffect(() => {
     setFilteredShoes(filterShoes());
+    if (filteredGender === 'All') {
+      navigate('/shop/');
+    } else if (filteredGender === 'men') {
+      navigate('/shop/men');
+    } else if (filteredGender === 'women') {
+      navigate('/shop/women');
+    } else if (filteredGender === 'kids') {
+      navigate('/shop/kids');
+    } else if (filteredCategory === 'casual') {
+      navigate('/shop/casual');
+    } else {
+      navigate('/shop');
+    }
   }, [filteredPrice, filteredCategory, filteredGender, shoeData]);
 
   return (
@@ -55,24 +86,24 @@ const Shop = () => {
                   </div>
                   <div className="card flex space-x-2 ">
                     <Checkbox
-                      onChange={(e) => setFilteredGender('Men')}
-                      checked={filteredGender === 'Men'}></Checkbox>
+                      onChange={(e) => setFilteredGender('men')}
+                      checked={filteredGender === 'men'}></Checkbox>
                     <label className="p-checkbox-label" htmlFor="cb1">
                       Mens
                     </label>
                   </div>
                   <div className="card flex space-x-2 ">
                     <Checkbox
-                      onChange={(e) => setFilteredGender('Women')}
-                      checked={filteredGender === 'Women'}></Checkbox>
+                      onChange={(e) => setFilteredGender('women')}
+                      checked={filteredGender === 'women'}></Checkbox>
                     <label className="p-checkbox-label" htmlFor="cb1">
                       Womens
                     </label>
                   </div>
                   <div className="card flex space-x-2 ">
                     <Checkbox
-                      onChange={(e) => setFilteredGender('Kids')}
-                      checked={filteredGender === 'Kids'}></Checkbox>
+                      onChange={(e) => setFilteredGender('kids')}
+                      checked={filteredGender === 'kids'}></Checkbox>
                     <label className="p-checkbox-label" htmlFor="cb1">
                       Kids
                     </label>
@@ -119,32 +150,32 @@ const Shop = () => {
                   </div>
                   <div className="card flex space-x-2 ">
                     <Checkbox
-                      onChange={(e) => setFilteredCategory('Running')}
-                      checked={filteredCategory === 'Running'}></Checkbox>
+                      onChange={(e) => setFilteredCategory('running')}
+                      checked={filteredCategory === 'running'}></Checkbox>
                     <label className="p-checkbox-label" htmlFor="cb1">
                       Running
                     </label>
                   </div>
                   <div className="card flex space-x-2 ">
                     <Checkbox
-                      onChange={(e) => setFilteredCategory('Football')}
-                      checked={filteredCategory === 'Football'}></Checkbox>
+                      onChange={(e) => setFilteredCategory('football')}
+                      checked={filteredCategory === 'football'}></Checkbox>
                     <label className="p-checkbox-label" htmlFor="cb1">
                       Football
                     </label>
                   </div>
                   <div className="card flex space-x-2 ">
                     <Checkbox
-                      onChange={(e) => setFilteredCategory('Casual')}
-                      checked={filteredCategory === 'Casual'}></Checkbox>
+                      onChange={(e) => setFilteredCategory('casual')}
+                      checked={filteredCategory === 'casual'}></Checkbox>
                     <label className="p-checkbox-label" htmlFor="cb1">
                       Casual
                     </label>
                   </div>
                   <div className="card flex space-x-2 ">
                     <Checkbox
-                      onChange={(e) => setFilteredCategory('Formal')}
-                      checked={filteredCategory === 'Formal'}></Checkbox>
+                      onChange={(e) => setFilteredCategory('formal')}
+                      checked={filteredCategory === 'formal'}></Checkbox>
                     <label className="p-checkbox-label" htmlFor="cb1">
                       Formal
                     </label>

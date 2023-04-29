@@ -27,10 +27,10 @@ const Navigation = () => {
   };
 
   const categories = [
-    { name: 'Mens', href: '/shop/mens' },
-    { name: 'Womens', href: '/shop/womens' },
+    { name: 'Mens', href: '/shop/men' },
+    { name: 'Womens', href: '/shop/women' },
     { name: 'Kids', href: '/shop/kids' },
-    { name: 'Sneakers', href: '/shop/sneakers' },
+    { name: 'Sneakers', href: '/shop/casual' },
   ];
 
   return (
@@ -47,7 +47,7 @@ const Navigation = () => {
             {categories.map((category) => (
               <Link
                 key={category.name}
-                to={'/shop'}
+                to={category.href}
                 className="text-gray-700  desktop-main-menu  py-2 rounded-md text-sm font-medium">
                 {category.name}
               </Link>
