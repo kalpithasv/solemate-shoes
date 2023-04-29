@@ -23,7 +23,6 @@ import { orderActions } from './store/order-slice';
 const App = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
-  const { orders } = useSelector((state) => state.order);
 
   const getUser = async () => {
     let user = localStorage.getItem('user');
