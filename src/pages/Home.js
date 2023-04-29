@@ -181,8 +181,8 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div class="relative h-70 w-70 ...">
-          <div class="absolute -top-20 right-70 left-40 h-50 w-50 ...">
+      <div class="relative h-70 w-70">
+          <div class="absolute -top-20 right-70 left-40 h-50 w-50">
              <img src={arr1} alt="" className="z-50 rotate-[-35deg] scale-105 float-left" />
              
           </div>
