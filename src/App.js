@@ -15,11 +15,17 @@ import Product from './pages/Product';
 import Contact from './pages/Contact';
 import Prod from './components/ProductCard';
 import { productsActions } from './store/products-slice';
+import { cartActions } from './store/cart-slice';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from './utils/firebase';
+import { orderActions } from './store/order-slice';
 
 const App = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
-  const getUser = () => {
+  const { orders } = useSelector((state) => state.order);
+
+  const getUser = async () => {
     let user = localStorage.getItem('user');
     user = JSON.parse(user);
     if (!user) return;
@@ -29,9 +35,33 @@ const App = () => {
 
   useEffect(() => {}, [user]);
 
+  const getOrders = async () => {
+    const docRef = doc(db, 'users', user.uid);
+    const docSnap = await getDoc(docRef);
+    dispatch(orderActions.clearOrders());
+    dispatch(orderActions.setOrders(docSnap.data().orders));
+  };
+
   useEffect(() => {
+    console.log('shoes');
     dispatch(productsActions.setShoeData(shoes));
     getUser();
+  }, []);
+
+  useEffect(() => {
+    if (user) {
+      getOrders();
+    }
+  }, [user]);
+
+  useEffect(() => {
+    const cartInfo =
+      localStorage.getItem('cartItems') !== 'undefined'
+        ? JSON.parse(localStorage.getItem('cartItems'))
+        : localStorage.clear();
+    if (cartInfo) {
+      dispatch(cartActions.setCart(cartInfo));
+    }
   }, []);
 
   return (

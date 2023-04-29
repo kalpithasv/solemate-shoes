@@ -21,6 +21,7 @@ const authSlice = createSlice({
       state.isAuthenticated = false;
       state.email = '';
       state.name = '';
+      localStorage.removeItem('user');
     },
 
     setIsAuthenticated(state, action) {

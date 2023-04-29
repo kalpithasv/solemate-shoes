@@ -9,7 +9,9 @@ const Cart = () => {
       <div className="overflow-y-scroll flex flex-col space-y-2 rounded-lg scrollbar-hide  items-center">
         {/* Shoe 1 */}
         {items.map((item) => (
-          <div className="flex items-center  space-x-2 rounded-lg ">
+          <div
+            key={item.id}
+            className="flex items-center  space-x-2 rounded-lg ">
             <div className="block">
               <img
                 src={item.imageURL}
@@ -34,7 +36,7 @@ const Cart = () => {
           </div>
         ))}
       </div>
-      <Link to="/shop">
+      <Link to="/cart">
         <div className="mt-2">
           <button className="bg-gradient-to-r from-blue-500 to-blue-200    w-full py-2 rounded-lg">
             Checkout

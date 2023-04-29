@@ -47,7 +47,7 @@ const Navigation = () => {
             {categories.map((category) => (
               <Link
                 key={category.name}
-                to={category.href}
+                to={'/shop'}
                 className="text-gray-700  desktop-main-menu  py-2 rounded-md text-sm font-medium">
                 {category.name}
               </Link>
@@ -76,7 +76,7 @@ const Navigation = () => {
                 />
                 {showUser && (
                   <div className="absolute top-10 right-0 bg-blue-200 shadow-lg rounded-md  z-50 w-40 flex flex-col space-y-3 items-start">
-                    <Link to="/cart">
+                    <Link to="/myorders">
                       <button className="text-gray-700 hover:text-gray-900 h-10 px-4 py-2 flex items-center space-x-3 hover:bg-blue-300 w-40 rounded-lg">
                         <BsBox className="h-6 w-6" />
                         <span>My Orders</span>
