@@ -4,10 +4,16 @@ import { Link } from 'react-router-dom';
 import { cartActions } from '../store/cart-slice';
 import { useDispatch } from 'react-redux';
 import { BsDash, BsPlus, BsTrash3 } from 'react-icons/bs';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { db } from '../utils/firebase';
+import { orderActions } from '../store/order-slice';
+import cartImg from '../assets/cart.png';
 
 const Cart = () => {
   const dispatch = useDispatch();
   const { items, totalPrice } = useSelector((state) => state.cart);
+  const { user } = useSelector((state) => state.auth);
+  const { orders } = useSelector((state) => state.order);
 
   const incrementQuantity = (item) => {
     const id = item.id;
@@ -27,11 +33,40 @@ const Cart = () => {
     dispatch(cartActions.removeItemFromCartBySize(item));
   };
 
+  const placeOrder = async () => {
+    await setDoc(
+      doc(db, 'users', user.uid),
+      {
+        orders: [...orders, { items, totalPrice }],
+      },
+      { merge: true }
+    );
+    dispatch(cartActions.clearCart());
+    await getOrders();
+  };
+
+  const getOrders = async () => {
+    const docRef = doc(db, 'users', user.uid);
+    const docSnap = await getDoc(docRef);
+    dispatch(orderActions.clearOrders());
+    dispatch(orderActions.setOrders(docSnap.data().orders));
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h1 className="text-3xl font-bold mb-8 text-center py-6">Cart</h1>
       {items.length === 0 ? (
-        <p>Your cart is empty</p>
+        <div className="flex justify-center flex-col space-y-5">
+          <img src={cartImg} alt="empty cart" className="w-24 mx-auto" />
+          <p className="text-center text-gray-600 text-xl mt-4">
+            Your cart is empty
+          </p>
+          <button className="px-4 py-2 outline outline-2 flex mx-auto justify-center w-fit rounded-lg ">
+            <Link to="/shop" className="text-blue-500 font-bold">
+              Go to shop
+            </Link>
+          </button>
+        </div>
       ) : (
         <div className="grid grid-cols-12 space-x-10">
           <div className="col-span-8">
@@ -85,14 +120,15 @@ const Cart = () => {
               <p className="text-gray-600 mb-4">
                 Total price: ${totalPrice.toFixed(2)}
               </p>
-              <button className="bg-blue-500 text-white px-4 py-2 rounded font-bold">
+              <button
+                onClick={() => placeOrder()}
+                className="bg-blue-500 text-white px-4 py-2 rounded font-bold">
                 Checkout
               </button>
             </div>
           </div>
         </div>
       )}
-      ;
     </div>
   );
 };

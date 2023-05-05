@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import AuthImg from '../assets/runn.jpg';
 import { useNavigate } from 'react-router-dom';
 import GoogleLogo from '../assets/google-icon.svg';
-import { doc, setDoc } from 'firebase/firestore';
+import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { db } from '../utils/firebase';
 import {
   getAuth,
@@ -33,16 +33,27 @@ const Auth = () => {
       } = await signInWithPopup(firebaseAuth, provider);
 
       localStorage.setItem('user', JSON.stringify(providerData[0]));
-      console.log(providerData[0]);
+
+      const docRef = doc(db, 'users', providerData[0].uid);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        dispatch(authActions.setUser(providerData[0]));
+        navigate('/');
+        return;
+      }
 
       dispatch(authActions.setUser(providerData[0]));
-      navigate('/');
+
       await setDoc(doc(db, 'users', providerData[0].uid), {
         name: providerData[0].displayName,
         email: providerData[0].email,
         photo: providerData[0].photoURL,
         orders: [],
       });
+
+      dispatch(authActions.setUser(providerData[0]));
+      navigate('/');
     } catch (error) {
       console.log(error);
     }
@@ -55,9 +66,20 @@ const Auth = () => {
         user: { providerData },
       } = await createUserWithEmailAndPassword(firebaseAuth, email, password);
       await updateProfile(firebaseAuth.currentUser, { displayName: username });
+      localStorage.setItem('user', JSON.stringify(providerData[0]));
+
+      const docRef = doc(db, 'users', providerData[0].uid);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        dispatch(authActions.setUser(providerData[0]));
+        navigate('/');
+        return;
+      }
+
       dispatch(authActions.setUser(providerData[0]));
       navigate('/');
-      localStorage.setItem('user', JSON.stringify(providerData[0]));
+
       setEmail('');
       setPassword('');
       setUsername('');
@@ -68,6 +90,9 @@ const Auth = () => {
         photo: providerData[0].photoURL,
         orders: [],
       });
+
+      dispatch(authActions.setUser(providerData[0]));
+      navigate('/');
     } catch (error) {
       console.log(error);
     }
@@ -95,7 +120,7 @@ const Auth = () => {
         <img
           src={AuthImg}
           alt="AuthImg"
-          className="h-full w-full object-top object-cover overflow-hidden shadow-lg"
+          className="h-full w-full object-bottom object-cover overflow-hidden shadow-lg"
         />
       </div>
       <div className="flex px-5 justify-center items-center md:w-1/2 w-full ">
